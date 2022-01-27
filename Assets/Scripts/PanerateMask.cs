@@ -48,9 +48,10 @@ public class PanerateMask : MonoBehaviour,IPointerClickHandler
         EventSystem.current.RaycastAll(eventData, _rawRaycastResults);
         foreach (var rlt in _rawRaycastResults)
         {
-            Debug.Log(rlt.gameObject);
+            Debug.Log($"raycast result target:{rlt.gameObject}");
             if (rlt.gameObject.GetComponent<IgnoreEventRaycast>())
             {
+                Debug.Log($"ignore:{rlt.gameObject}");
                 continue;
             }
             ExecuteEvents.Execute(rlt.gameObject, eventData, ExecuteEvents.pointerClickHandler);
